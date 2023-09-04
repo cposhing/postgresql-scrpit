@@ -23,18 +23,17 @@ goto fail
 
 :init
 
-:: some init env list  locale=Chinese_China.utf8
-:: 
-:: set PGLIB=%PGHOME%lib
-
 set DATADIR=%PGHOME%data
 set PW_FILE=%SCRPIT_HOME%pw.txt
 
+:: locale Chinese_China.utf8 or zh_CN
+:: auth-host md5 or scram-sha-256
+
 "%INITDB_EXE%"^
  --pgdata="%DATADIR%"^
- --locale=zh_CN^
+ --locale=Chinese_China.utf8^
  --encoding=UTF8^
- --auth-host=md5^
+ --auth-host=scram-sha-256^
  --username=postgres^
  --pwfile="%PW_FILE%"
 
