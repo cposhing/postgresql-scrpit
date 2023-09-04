@@ -1,7 +1,9 @@
 @echo off 
 
 :: 启动postgresql
+set EXIT_CODE=0
 
+::::::::::::::::::::::::::::::::::::::::::::::
 set DIRNAME=%~dp0
 if "%DIRNAME%"=="" set DIRNAME=.
 
@@ -42,9 +44,10 @@ if %ERRORLEVEL% equ 1 goto fail
 goto end
 
 :fail
+set EXIT_CODE=%ERRORLEVEL%
 echo [错误]请解决错误后, 继续执行操作
 pause
 
 :end
-exit
+exit /b %EXIT_CODE%
 
